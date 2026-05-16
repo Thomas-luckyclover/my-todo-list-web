@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="../css/style.css">
+    <title>Todoit!</title>
+</head>
+<body>
+    <div class="container">
+    <header class="header"> <!-- header section  -->
+        <div class="logo-header">
+            <img src="../assets/logo.png" alt="logo of the page - a neon owl">
+        </div>
+        <nav class="nav-header">
+            <a href="../index.html">Home</a> 
+            <a href="Tasks.html">Tasks</a>
+            <a href="Stats.html">Stats</a>
+            <a href="Settings.html">Settings</a>
+            <a href="about.html">About</a>
+        </nav>
+    </header>
+    </div>
+
+    <main> <!-- main-section  -->
+
+        <div class ="searchbox-container-2"> <!-- search box container -->
+            <h2>Search Tool</h2>
+          <div class="search-box">
+                <input type="text" placeholder="Search Tasks...">
+                <i class="fa-solid fa-magnifying-glass"></i>
+          </div>
+          
+        <div class="filter-sort-box">
+          <div>
+            <select name="" id="">
+                <option value="">All</option>
+                <option value="">Low</option>
+                <option value="">Medium</option>
+                <option value="">High</option>
+            </select>
+
+            <select name="" id="">
+                <option value="">Sort: Newest</option>
+                <option value="">Sort: Oldest</option>
+                <option value="">Sort: Priority</option>
+                <option value="">Sort: Alphabetical</option>
+            </select>
+        </div>
+    
+    </div>
+    </div>
+
+    <div class="task-list-header">
+        <h2>Your Tasks</h2>
+    </div>
+    
+    <div class="task-item">
+        <!-- Task items will go here -->
+         <h2>Task title</h2>
+         <div>
+            <input type="text" placeholder="Description (optional)">
+         </div>
+         <div class="task-option">
+                <select name="" id="">
+                    <option value="">Set Priority</option>
+                    <option value="">Low</option>
+                    <option value="">Medium</option>
+                    <option value="">High</option>
+                </select>
+
+                <input type="date">
+         </div>
+         <div class="task-actions">
+                <i class="fa-solid fa-trash-can action-btn delete"></i>
+                <i class="fa-solid fa-circle-check action-btn check"></i>    
+         </div>
+    </div>
+    
+    <div class="load-more">
+        Load more tasks...
+    </div>
+    </main>
+</body>
+</html>

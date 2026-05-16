@@ -1,0 +1,1005 @@
+:root {
+    --bg: #0D0221; /* Màu nền chính - tím đen, tạo cảm giác không gian vũ trụ */
+    --primary: #FF00FF; /* Màu chính - hồng neon rực rỡ, dùng cho hover, glow mạnh */
+    --secondary: #9D00FF; /* Màu thứ cấp - tím đậm */
+    --sub-color: darkblue; /* Màu phụ - xanh đậm */
+    --text: #C0C0C0; /* Màu chữ - xám nhạt */
+    --radius: 12px; /* Bán kính góc bo tròn */
+}
+
+
+/* Universal Styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+
+body {
+    margin: 0;
+    background: radial-gradient(ellipse at top left, #003366, var(--bg));
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    min-height: 100vh;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: var(--text);
+}
+
+
+
+
+
+/* Global Container Styles for pages - header section*/
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+
+/* Global Container Styles for index.html - main section */
+.narrow-container {
+
+    /* Set up for narrow content areas  */
+    max-width: 800px;
+    margin: 100px auto; /* Căn giữa theo chiều ngang (auto), cách top 100px */
+    padding: 0px 20px; /* Thêm padding ngang để không bị dính sát mép trên */
+
+    /* Set up for main content area  */
+    width: 400px;
+    height: 500px;
+    padding: 30px; /* ghi đè padding bên trong để tạo khoảng cách giữa nội dung và viền */
+    background: transparent;
+    border: 2px solid black;
+    border-radius: var(--radius);
+    backdrop-filter: blur(10px);
+    box-shadow: 10px 10px 30px cyan; /* Thêm hiệu ứng phát sáng cyan cho toàn bộ khối main - x-asis y-asis blur color*/ 
+
+}
+
+
+/* CSS Block for index.html */
+/* side-bar-quickaccess */
+.sidebar-quick-access {
+    
+    position: fixed; /* Đặt vị trí tuyệt đối để nó nằm trên cùng và không bị ảnh hưởng bởi layout của trang */
+    /* Ban đầu đặt nó ở ngoài màn hình bên trái, chỉ để lại một phần nhỏ làm "tay cầm" để người dùng biết có thể hover vào */
+    top: 50%;
+    left: -175px; /*50px offset only, total width 220px */
+    transform: translateY(-50%); /* -50% để căn giữa dọc */
+
+    width: 220px;
+    height: 172px;
+    background: rgba(13, 2, 33, 0.85);
+    backdrop-filter: blur(10px); /* Hiệu ứng kính - Tạo hiệu ứng kính mờ (glassmorphism) - làm mờ phần đằng sau*/
+    border: 1px inset var(--secondary);
+    border-left: none;
+    border-radius: 1.2px 12px 12px 1.2px; 
+    padding: 10px 20px;
+
+    transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);; /* Hiệu ứng trượt */
+    z-index: 1000; /* absolute preveledge over other elements */
+}
+
+.sidebar-quick-access:hover {
+    left: 0; /* Hiện thanh sidebar khi hover */
+    box-shadow: 10px 0px 15px var(--secondary);
+}
+
+.sidebar-label {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--primary);
+    font-weight: bold;
+    margin: 5px 55px 15px 0px;
+    font-size: 16px;
+    letter-spacing: 1px;
+
+}
+
+.sidebar-quick-access::after {
+    content: "➤";
+    position: absolute;
+    right: 10px; /* Nằm sát mép phải của sidebar */
+    top: 50%;
+    transform: translateY(-50%); /* Căn giữa dọc mũi tên so với sidebar */
+
+    color: var(--primary);
+    text-shadow: 0 0 10px var(--primary);
+    font-size: 18px;
+
+    animation: pulse-arrow 1.5s infinite; /* Hiệu ứng nhấp nháy cho mũi tên */
+    pointer-events: none; /* Để không cản trở việc click */
+}
+
+/* Định nghĩa Animation cho mũi tên */
+@keyframes pulse-arrow {
+    0%, 100% {
+        /* điểm bắt đầu và kết thúc: mũi tên sáng bình thường */
+        text-shadow: 0 0 10px var(--primary);
+        right: 10px; /* Vị trí bình thường */
+        opacity: 1; /* sáng đầy đủ */
+    }
+    50% {
+        /* điểm giữa: mũi tên sáng hơn */
+        text-shadow: 0 0 20px var(--primary), 0 0 30px var(--primary); /* Tăng cường hiệu ứng phát sáng - glow 2 lớp - lớp 2 là glow lan xa */
+        right: 12px; /* Nhích nhẹ sang phải để tạo hiệu ứng "nhấp nháy" */
+        opacity: 0.8; /* mờ dần */
+    }
+}
+
+/* Hide the text when not hover */
+.sidebar-label, .sidebar-content {
+    opacity: 0;
+    visibility: hidden; /* Ẩn hẳn phần text và các nút bấm khi không hover */
+    transition: 0.3s;
+}
+
+
+/* Show the text when hover */
+.sidebar-quick-access:hover .sidebar-label,
+.sidebar-quick-access:hover .sidebar-content {
+    opacity: 1;
+    visibility: visible;
+}
+
+
+.sidebar-content {
+    /* Visual Styles - nền, backdground */
+    border: 1px solid var(--secondary); 
+    background: rgba(157, 0, 255, 0.1); /* Nền tím rất nhạt */
+    outline: none;
+    
+    /* Typography & Layout - chữ, layout */
+    color: var(--text);
+    width: 80%; /* các nút button dài bằng nhau */
+    padding: 8px; /* padding để tạo khoảng cách giữa chữ và viền các chiều cách đúng 8px */
+    display: block; /* Để mỗi nút bấm chiếm một dòng riêng, tạo hiệu ứng "stack" */
+    margin: 10px 0px; /* Chỉ margin trên dưới, bỏ margin trái phải để không bị lệch so với chữ Quick Access */
+    text-transform: uppercase;
+    font-family: 'Courier New', Courier, monospace;
+    letter-spacing: 1.5px;
+    font-size: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-radius: 4px;
+}
+
+/* Hiệu ứng hover cho nút bấm chuyên nghiệp hơn */
+.sidebar-content:hover {
+    background: var(--secondary);
+    color: #fff;
+    box-shadow: 0 0 15px var(--secondary);
+    transform: scale(1.05); /* Phóng nhẹ khi hover */
+}
+
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 39px 0;
+}
+
+.logo-header {
+    width: 50%;
+}
+
+.logo-header img {
+    height: 115px;
+    width: 36%;
+    border-radius: var(--radius);
+    box-shadow: 20px 10px 15px rgba(157, 0, 255, 0.2);
+}
+
+.logo-header img:hover {
+    transform: scale(1.05); /* Phóng nhẹ khi hover */
+    box-shadow: none; /* Bỏ shadow khi hover để tạo hiệu ứng "sạch sẽ" hơn */
+}
+
+.nav-header {
+    width: 50%;
+    display: flex; /* Kích hoạt Flexbox để dễ dàng căn chỉnh */
+    justify-content: flex-end; /* Đẩy menu sang phải */
+    align-items: center; /* Căn giữa dọc */
+    padding: 20px 65px;
+    background: rgba(13, 2, 33, 0.5); /* Kính mờ nhẹ */
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(157, 0, 255, 0.2); /* Viền tím mảnh */
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    gap: 30px;
+    border-radius: var(--radius);
+
+}
+
+.nav-header a:hover {
+    color: var(--sub-color);
+}
+
+.nav-header a {
+    text-decoration: none;
+    letter-spacing: 1px;
+
+    color: var(--text);
+    font-size: 18px;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+
+/* Main content area*/
+
+
+.text-main-content {
+    text-align: center;
+    margin-bottom: 50px;
+    text-shadow: 0 0 8px rgba(0, 255, 255, 0.5); /* Thêm chút glow cho ảo */
+}
+
+.input-main-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.todos-input {    
+    color: var(--text);
+    font-size: 16px; /* kích cỡ chữ của placeholder + input */
+    border: 2px solid  black;
+    outline: none;
+    padding: 10px 10px 10px 25px;
+    border-radius: 30px;
+    background-color: transparent; /* Nền trong suốt để thấy rõ hiệu ứng kính */
+    backdrop-filter: blur(10px); /* Hiệu ứng kính mờ (glassmorphism) */
+    margin-right: 25px;
+}
+
+.todos-input::placeholder {
+    opacity: 0.92; /* Nên để hơi mờ một chút để phân biệt với chữ mình gõ */
+    text-shadow: 0 0 8px rgba(0, 255, 255, 0.5); /* Thêm chút glow cho ảo */
+    color: var(--text);
+}
+
+
+.add-button {
+    background: cyan;
+    color: black;
+    border-radius: 39px;
+    outline: none;
+    width: 39px;
+    height: 39px;
+}
+
+.empty-image {
+    display: block;
+    margin: 20px auto 35px auto;
+    width: 300px;
+    opacity: 0.75;
+    box-shadow: 2px 2px 12px cyan;
+}
+
+
+/* End of CSS Block for index.html */
+
+
+
+
+
+
+
+
+/* CSS Block for tasks.html */
+
+.searchbox-container-2 {
+    /* Set up for narrow content areas  */
+    max-width: 800px;
+    margin: 100px auto; /* Cách top 100px, căn giữa ngang */
+    padding: 0 20px;
+
+    /* Set up for main content area  */
+    width: 800px;
+    height: 250px;
+    padding: 30px;
+    background: transparent;
+    border: 2px solid rgba(157, 0, 255, 0.3);
+    backdrop-filter: blur(10px); 
+
+    /* Tạo 4 góc bám sáng vào khối */
+    /* ĐỂ CÁC GÓC BÁM VÀO KHỐI DIV */
+    position: relative;
+    
+
+    /* Làm việc với các phần tử bên trong  */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
+
+}
+
+
+   /* Góc trên bên trái */
+   .searchbox-container-2::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 20px;
+    height: 20px;
+    border-top: 5.5px solid var(--secondary);
+    border-left: 5.5px solid var(--secondary);
+    filter: 
+        drop-shadow(0 0 2px #fff)           /* Lõi trắng rực rỡ sát viền - /* Lớp 1: trắng, sát viền  */
+        drop-shadow(0 0 8px var(--secondary))  /* Quầng sáng tím chính - Lớp 2: tím, rộng hơn */
+        drop-shadow(0 0 15px var(--secondary)); /* Quầng mờ lan tỏa diện rộng - Lớp 3: tím, lan xa */
+
+    /* thêm padding bottom và right cho top và leftf để mở rộng vùng phủ sáng shadow */
+    padding-bottom: 15px; 
+    padding-right: 15px;
+   }
+
+    /* Góc dưới bên phải */
+    .searchbox-container-2::after {
+    content: "Scanning...";
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+    width: 20px;
+    height: 20px;
+    border-bottom: 5.5px solid var(--secondary);
+    border-right: 5.5px solid var(--secondary);
+    filter: 
+        drop-shadow(0 0 2px #fff)           /* Lõi trắng rực rỡ sát viền */
+        drop-shadow(0 0 8px var(--secondary))  /* Quầng sáng tím chính */
+        drop-shadow(0 0 15px var(--secondary)); /* Quầng mờ lan tỏa diện rộng */
+
+
+    /* CSS cho Scanning... */
+    color: #fff;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    display: flex;
+    align-items: flex-start; /* Đẩy chữ lên trên viền đáy */
+    justify-content: flex-end; /* Đẩy chữ sang phải viền phải */
+    /* thêm padding top và left cho bottom và right để mở rộng vùng phủ sáng shadow */
+    padding-top: 15px; 
+    padding-left: 15px;
+    font-style: italic;
+    white-space: nowrap; /* white-space dùng để ngăn chữ xuống dòng nếu quá dài. */
+}
+
+
+.searchbox-container-2 h2 {
+    color: var(--text);
+    margin-bottom: 20px;
+    text-shadow: 0 0 8px rgba(0, 255, 255, 0.5); /* Thêm chút glow cho ảo */
+}
+
+
+
+.searchbox-container-2 input[type="text"] {
+    color: var(--text);
+    width: 300px;
+    padding: 15px; /* padding kéo giãn khiến ô input cao 2 chiều trên dưới là 30px*/
+    background: rgba(13, 2, 33, 0.6); /* Nền tối mờ */
+    border: none;
+    margin-left: 30px;
+    border-radius: var(--radius);
+    backdrop-filter: blur(10px);
+}
+
+.searchbox-container-2 input[type="text"]:hover {
+    border-color: var(--primary); /* Đổi sang màu hồng neon khi hover */
+    box-shadow: 0 0 10px var(--secondary); /* Thêm hiệu ứng phát sáng */
+}
+
+/* CSS cho icon search  */
+.searchbox-container-2 .fa-magnifying-glass {
+    margin-left: 9px;
+    color: var(--text);
+    text-shadow: 0 0 8px rgba(0, 255, 255, 0.5); /* Thêm chút glow cho ảo */
+    cursor: pointer;
+}
+
+.searchbox-container-2 .fa-magnifying-glass:hover {
+    color: var(--secondary);
+    text-shadow: 0 0 12px cyan;
+}
+
+
+.filter-sort-box {
+    margin-top: 25px;
+    display: flex;
+    gap: 20px;
+}
+
+.searchbox-container-2 select {
+    color: var(--text);
+    background-color: rgba(13, 2, 33, 0.6);
+    padding: 9px;
+    border: none;
+    border-radius: var(--radius);
+    backdrop-filter: blur(10px);   
+    outline: none; 
+}
+
+.searchbox-container-2 select:hover {
+    border-color: var(--primary); /* Đổi sang màu hồng neon khi hover */
+    box-shadow: 0 0 10px var(--secondary); /* Thêm hiệu ứng phát sáng */
+}
+
+.searchbox-container-2 select option {
+    background-color: var(--bg);
+    border: 1.5px solid var(--secondary);
+}
+
+
+/* main content of Tasks page  */
+.task-list h2 {
+    text-align: flex-start;
+    margin-bottom: 30px;
+    text-shadow: 0 0 8px rgba(0, 255, 255, 0.5); /* Thêm chút glow cho ảo */
+}
+
+.task-list-header {
+    max-width: 800px;
+    margin: 100px auto;
+    padding: 0 20px;
+}
+
+.task-item {
+    /* set up cho task-item area */
+    width: 500px;
+    max-width: 500px;
+    margin: 20px auto;
+    padding: 0 20px;
+    height: auto;
+
+
+    /* main content ở task item */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+
+
+    /* CSS cho task item */
+    background:  rgba(20, 10, 45, 0.6); /* Nền tím rất nhạt */
+    border: 2px solid rgba(157, 0, 255, 0.3);
+    border-radius: 30px;
+    backdrop-filter: blur(10px);
+    padding: 35px;
+    margin-bottom: 20px;
+
+
+}
+
+.task-item h2 {
+    text-align: center;
+    font-weight: 900;
+    color: var(--text);
+    width: 100%;
+    text-shadow: 0 0 8px rgba(0, 255, 255, 0.5); /* Thêm chút glow cho ảo */
+}
+
+.task-item input[type="text"] {
+    color: var(--text);
+    width: 100%;
+    padding: 30px 50px;
+    background: rgba(13, 2, 33, 0.6); /* Nền tối mờ */
+    backdrop-filter: blur(10px);
+    margin: 12px;
+    border: var(--secondary);
+}
+
+.task-item input[type="text"]:hover {
+    border-color: var(--primary); /* Đổi sang màu hồng neon khi hover */
+    box-shadow: 0 0 10px var(--secondary); /* Thêm hiệu ứng phát sáng */
+}
+
+.task-item select {
+    font-weight: 888;
+    color: var(--text);
+    background-color: rgba(13, 2, 33, 0.6);
+    padding: 9px;
+    border: none;
+    border-radius: var(--radius);
+    backdrop-filter: blur(10px);   
+    outline: none; 
+}
+
+.task-item select:hover {
+    border-color: var(--primary); /* Đổi sang màu hồng neon khi hover */
+    box-shadow: 0 0 10px var(--secondary); /* Thêm hiệu ứng phát sáng */
+}
+
+.task-item input[type="date"] {
+    font-weight: 888;
+    color: var(--text);
+    background-color: rgba(13, 2, 33, 0.6);
+    padding: 9px;
+    border: none;
+    border-radius: var(--radius);
+    backdrop-filter: blur(10px);   
+    outline: none; 
+}
+
+.task-item input[type="date"]:hover {
+    border-color: var(--primary); /* Đổi sang màu hồng neon khi hover */
+    box-shadow: 0 0 10px var(--secondary); /* Thêm hiệu ứng phát sáng */
+}
+
+.task-option {
+    /* set up cho task-option area */
+    /* task-option là container bọc 2 phần tử select, input date để tạo thành 1 hàng ngang */
+    display: flex;
+    gap: 12px;
+    margin-left: 25px; 
+}
+
+.task-option select option {
+    background-color: var(--bg);
+    border: 1.5px solid var(--secondary);
+}
+
+/* CSS cho 2 nút Xóa và Check bên dưới mỗi task item */
+
+/* 1. Container bọc ngoài cùng - Giữ cho 2 nút nằm ngang */
+.task-actions {
+    display: flex !important; /* Force nằm ngang */
+    flex-direction: row !important; 
+    justify-content: center; /* Căn giữa theo chiều ngang */
+    align-items: center; /* Căn giữa cả 2 nút theo chiều ngang và dọc */
+    gap: 5px; /* Khoảng cách giữa 2 ô vuông */
+    margin-top: 25px;
+    width: 100%;
+}
+
+/* 2. CSS cho cái ô vuông màu (Background) */
+.action-btn {
+    width: 45px;
+    height: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+/* Màu riêng cho ô xóa */
+.action-btn.delete {
+    background: darkred;
+    border: 1px solid darkred;
+}
+
+/* Màu riêng cho ô check */
+.action-btn.check {
+    background: rgba(255, 0, 85, 0.2);
+    border: 1px solid var(--secondary);
+}
+
+/* 3. CSS cho Icon bên trong - Xóa hết margin để nó không bị lệch */
+.action-btn i {
+    font-size: 20px;
+    margin: 0 !important; /* Triệt tiêu margin gây lệch dọc */
+    padding: 0 !important;
+}
+
+/* Màu cho icon bên trong nút xóa và check */
+.delete i { 
+    color: rgb(200, 21, 21);   /* Icon thùng rác màu đỏ */
+}
+.check i { 
+    color: var(--secondary);    /* Icon dấu tích màu tím */
+}
+
+/* 4. Hiệu ứng Hover - Sáng bừng cả ô */
+/* Nền từ darkred (đỏ tối) → rgb(210, 33, 33) (đỏ sáng hơn) + Có bóng đỏ phía sau*/
+.action-btn.delete:hover {
+    background: rgb(210, 33, 33);
+    box-shadow: 0 0 10px rgb(125, 17, 17);
+}
+.action-btn.check:hover {
+    /* Nền từ rgba(255, 0, 85, 0.2) (hồng nhạt mờ) → var(--secondary) (tím đậm) + Bóng tím tỏa rộng 15px*/
+    background: var(--secondary);
+    box-shadow: 0 0 15px var(--secondary);
+}
+.action-btn:hover i {
+    color: #fff; /* Hover vào thì icon trắng lên cho đẹp */
+}
+
+/* Load More Task  */
+.load-more {
+    width: 200px;
+    height: 45px;
+    margin: 40px auto;
+    display: flex;
+    align-items: center; /* Căn giữa chữ theo chiều DỌC */
+    justify-content: center;  /* Căn giữa chữ theo chiều NGANG */
+    cursor: pointer;
+    
+    /* Hiệu ứng kính */
+    background: rgba(157, 0, 255, 0.05); /* Nền tím, độ mờ 5% (rất nhạt) */
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(157, 0, 255, 0.3); /* Viền tím, độ mờ 30% */
+    border-radius: 8px;
+    
+    color: var(--text);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 13px;
+    transition: all 0.4s ease;
+}
+
+.load-more:hover {
+    background: rgba(157, 0, 255, 0.2);  /* Nền đậm hơn (20% thay vì 5%) */
+    border-color: var(--primary); /* Viền chuyển sang HỒNG NEON (#FF00FF) */
+    box-shadow: 0 0 20px rgba(157, 0, 255, 0.4); /* Bóng tím tỏa rộng 20px */
+    transform: translateY(-3px); /* Bay Lên 3px */
+    color: #fff; /* Chữ chuyển từ xám → TRẮNG */
+}
+
+
+/* End of CSS Block for task.html */
+
+
+
+
+/* CSS Block for statistic.html */
+.Statistic-title {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    color: var(--text);
+    font-style: italic;
+}
+
+
+.stats-container {
+    max-width: 1200px;
+    padding: 20px;
+    margin: 0 auto;
+
+
+    display: flex;       /* Kích hoạt Flexbox để dàn hàng ngang */
+    gap: 15px;           /* Khoảng cách giữa các cột */
+    flex-direction: row; /* Đặt các cột theo hàng ngang */
+    width: 100%;         /* Chiếm hết 1200px của main */
+    margin-top: 30px;
+    justify-content: center;
+    align-content: center;
+}
+
+/* Style cho từng Cột */
+.stats-column {
+    background: rgba(13, 2, 33, 0.4); /* Nền tối mờ để thấy rõ "trong cơ" */
+    border: 1px solid rgba(157, 0, 255, 0.2);
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    border: 1px inset var(--primary) ;
+    border-bottom: 1px inset var(--secondary);
+    box-shadow: 0px 0px 12px var(--secondary);
+    
+}
+
+.column-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    width: 380px;
+    height: auto;
+    text-align: center;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+}
+
+.column-header h3 {
+    color: var(--primary);
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+    margin-bottom: 15px;
+    margin-top: 10px;
+}
+
+/* Phần thân cột - nơi chứa các task con */
+.column-body {
+    flex-grow: 1; /* Cho phép phần thân cột chiếm hết không gian còn lại sau header */
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+
+.stat-task-card {
+    width: 270px;
+    display: flex;
+    justify-self: center;
+    align-self: center;
+    background: rgba(157, 0, 255, 0.05); /* Nền tím cực nhẹ */
+    border: 1px solid rgba(157, 0, 255, 0.3); /* Viền mờ */
+    padding: 10px 15px;
+    border-radius: 8px;
+    margin-bottom: 8px;
+    transition: all 0.3s ease;
+    cursor: grab; /* Tạo cảm giác có thể kéo thả sau này */
+}
+
+/* Hiệu ứng khi di chuột vào: Sáng bừng lên */
+.stat-task-card:hover {
+    background: rgba(157, 0, 255, 0.2);
+    border-color: var(--primary);
+    box-shadow: 0 0 10px rgba(255, 0, 255, 0.2);
+    transform: translateX(5px); /* Nhích nhẹ sang phải cho sinh động */
+}
+
+.stat-task-title {
+    color: var(--text);
+    font-size: 14px;
+    font-weight: 500;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis; /* Nếu tên quá dài sẽ hiện dấu ... */
+}
+
+
+/* End of CSS Block for Stats.html*/
+
+
+
+
+
+
+/* CSS Block for Settings.html */
+.setting-container {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-items: center;
+    justify-content: center;
+    padding: 12px;
+    max-width: 800px;
+    margin: 20px auto;
+    background: transparent;
+    border: 1px solid rgba(13, 2, 33, 0.6);
+    backdrop-filter: blur(15px);
+    /* box-shadow 2 màu */
+    box-shadow: 0 0 20px rgba(123, 130, 137, 0.5), 0 0 20px rgba(255, 0, 255, 0.2);
+}
+
+#setting-title {
+    text-align: center;
+    font-size: 22px;
+    font-style: italic;
+    color: var(--text);
+    text-shadow: 0 0 10px var(--primary);
+    margin-bottom: 20px;
+    letter-spacing: 2.5px;
+    
+    text-shadow: 
+    0 0 8px var(--primary),
+    0 0 16px rgba(255, 0, 255, 0.6),
+    0 0 24px rgba(0, 255, 255, 0.4);
+}
+
+
+.setting-group-general {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 1px solid rgba(157, 0, 255, 0.3);
+    padding: 15px 0;
+}
+
+
+.setting-notification-title {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    color: var(--text);
+    align-items: center;
+
+    color: var(--text);
+    text-shadow: 0 0 8px var(--primary);
+
+}
+
+.setting-notification-title i {
+    font-size: 18px;
+}
+
+.setting-notification-title span {
+    font-size: 19px;
+    font-weight: 500;
+    letter-spacing: 1px;
+}
+
+.setting-management-title {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    color: var(--text);
+    align-items: center;
+
+    color: var(--text);
+    text-shadow: 0 0 8px var(--primary);
+
+}
+
+.setting-management-title i {
+    font-size: 18px;
+}
+
+
+
+
+.setting-music-title {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    color: var(--text);
+    align-items: center;
+
+    color: var(--text);
+    text-shadow: 0 0 8px var(--primary);
+
+}
+
+.setting-music-title i {
+    font-size: 18px;
+}
+
+
+
+.setting-version-title {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    color: var(--text);
+    align-items: center;
+
+    color: var(--text);
+    text-shadow: 0 0 8px var(--primary);
+
+}
+
+.setting-version-title i {
+    font-size: 18px;
+}
+
+
+
+.setting-control-general {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap; /* Cho phép xuống dòng nếu không đủ chỗ */
+}
+
+/* Style cho toggle switch*/
+
+.toggle-switch {
+    width: 50px;
+    height: 25px;
+    background: #2a2a3a;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: 0.25s;
+    position: relative;
+    
+}
+
+.toggle-switch:hover {
+box-shadow: 0 0 30px rgba(157, 0, 255, 0.2);
+}
+
+.toggle-switch.active {
+    background: var(--secondary);  /* khi có class "active" → nền chuyển sang màu tím neon */
+}
+
+.toggle-switch::after {
+    content: "";
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    background: var(--text); /* nút tròn màu trắng */
+    border-radius: 100%;  /* hình tròn hoàn hảo */
+    top: 0px;
+    left: 0px;  /* vị trí ban đầu (trái) – trạng thái OFF */
+    transition: left 0.25s;
+}
+.toggle-switch.active::after {
+    left: 25px;
+}
+
+
+.setting-btn {
+    background: rgba(13, 2, 33, 0.7); /* Nền tối huyền bí ăn nhập với vũ trụ */
+    color: var(--text);
+    border: 1px solid var(--secondary);
+    padding: 10px 20px;
+    font-size: 14px;
+    font-weight: 500;
+    border-radius: 6px;
+    cursor: pointer;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    backdrop-filter: blur(5px);   
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+/* Hiệu ứng Hover rực sáng cho nút thường */
+.setting-btn:hover {
+    background: var(--secondary);
+    color: #fff;
+    border-color: var(--primary);
+    box-shadow: 0 0 15px var(--secondary), 0 0 5px #fff;
+    transform: translateY(-2px); /* Nhấc nhẹ nút lên tạo cảm giác cơ học */
+}
+
+/* Thiết kế riêng cho nút Danger (Delete All) - Đỏ neon cảnh báo nguy hiểm */
+.setting-btn.danger {
+    border-color: #ff0055;
+    background: rgba(255, 0, 85, 0.05);
+    color: #ff99bb;
+}
+
+.setting-btn.danger:hover {
+    background: rgba(255, 0, 85, 0.2);
+    border-color: #ff0055;
+    box-shadow: 0 0 20px rgba(255, 0, 85, 0.4);
+    color: #fff;
+    transform: translateY(-2px);
+}
+
+.music-select {
+    background: rgba(13, 2, 33, 0.8); /* Giữ nền tối trong suốt */
+    color: #fff;
+    border: 1px solid var(--secondary);
+    border-radius: 6px;
+    padding: 8px 16px; /* Để khoảng trống tự nhiên cho mũi tên mặc định */
+    font-size: 14px;
+    font-family: inherit;
+    outline: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.music-select:hover {
+    border-color: var(--primary);
+    box-shadow: 0 0 8px var(--secondary);
+}
+
+/* Màu danh sách bài hát lúc bấm xổ xuống */
+.music-select option {
+    background: #0d0221; /* Trùng với màu nền --bg */
+    color: var(--text);
+}
+
+.version-text {
+    font-size: 16px;
+    font-style: italic;
+    color: var(--text);
+}
+
+
+

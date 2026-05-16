@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <link rel="stylesheet" href="../css/style.css" />
+    <title>Todoit!</title>
+  </head>
+  <body>
+    <div class="container">
+      <header class="header">
+        <!-- header section  -->
+        <div class="logo-header">
+          <img src="../assets/logo.png" alt="logo of the page - a neon owl" />
+        </div>
+        <nav class="nav-header">
+          <a href="../index.html">Home</a>
+          <a href="Tasks.html">Tasks</a>
+          <a href="Stats.html">Stats</a>
+          <a href="Settings.html">Settings</a>
+          <a href="about.html">About</a>
+        </nav>
+      </header>
+    </div>
+
+    <main>
+      <div class="setting-container">
+        <div id="setting-title">
+          <h1>⚙️Settings</h1>
+        </div>
+
+        <div class="setting-group-general">
+          <div class="setting-notification-title">
+            <i class="fa-regular fa-bell"></i>
+            <span>Notifications</span>
+          </div>
+          <div class="setting-control-general">
+            <div class="toggle-switch" id="notification-Toggle"></div>
+            <span>On/Off</span>
+          </div>
+        </div>
+
+        <div class="setting-group-general">
+          <div class="setting-management-title">
+            <i class="fa-solid fa-database"></i>
+            <span>Data Management</span>
+          </div>
+          <div class="setting-control-general">
+            <button class="setting-btn" id="exportBtn">📤 Export JSON</button>
+            <button class="setting-btn" id="importBtn">📥 Import</button>
+            <button class="setting-btn danger" id="clearAllBtn">
+              🗑️ Delete All
+            </button>
+          </div>
+        </div>
+
+        <div class="setting-group-general">
+          <div class="setting-music-title">
+            <i class="fa-solid fa-music"></i>
+            <span>Music</span>
+          </div>
+          <div class="setting-control-general">
+            <select class="music-select" id="bgMusicSelect">
+              <option value="off">🔇 Mute</option>
+              <option value="song-1" selected>🎧 Song 1</option>
+              <option value="song-2">🎧 Song 2</option>
+              <option value="song-3">🎧 Song 3</option>
+              <option value="song-4">🎧 Song 4</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="setting-group-general">
+          <div class="setting-version-title">
+            <i class="fas fa-info-circle"></i>
+            <span>Version</span>
+          </div>
+          <div class="version-text">TODO IT! - v1.0.0</div>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

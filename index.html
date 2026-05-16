@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+      integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    <title>Todoit!</title>
+  </head>
+  <body>
+    <!-- Quick action part  -->
+    <div class="sidebar-quick-access">
+      <div class="sidebar-label">Quick Actions</div>
+      <button class="sidebar-content" onclick="openAddTask()">Add Task</button>
+      <button class="sidebar-content" onclick="clearAllTasks()">
+        Clear All
+      </button>
+      <button class="sidebar-content" onclick="toggleFocusMode()">
+        Music Mode
+      </button>
+    </div>
+
+    <div class="container">
+      <header class="header">
+        <!-- header section  -->
+        <div class="logo-header">
+          <img src="assets/logo.png" alt="logo of the page - a neon owl" />
+        </div>
+        <nav class="nav-header">
+          <a href="index.html">Home</a>
+          <a href="pages/Tasks.html">Tasks</a>
+          <a href="pages/Stats.html">Stats</a>
+          <a href="pages/Settings.html">Settings</a>
+          <a href="pages/about.html">About</a>
+        </nav>
+      </header>
+    </div>
+
+    <main class="narrow-container">
+
+      <h1 class="text-main-content">TODO IT!</h1>
+
+      <div class="input-main-content">
+        <input
+          type="text"
+          class="todos-input"
+          placeholder="Add a new task..."
+        />
+        <button class="add-button">
+          <i class="fa-solid fa-plus"></i>
+        </button>
+      </div>
+      <div class="todos-main-content">
+        <ul class="todos"></ul>
+        <img
+          class="empty-image"
+          src="assets/emptyimage.png"
+          alt="empty todo list image - a person relaxing"
+        />
+      </div>
+
+      <div style="font-style: italic">
+        <span>Hi friends, </span>Check the Tasks part to view details!
+      </div>
+    </main>
+  </body>
+</html>
