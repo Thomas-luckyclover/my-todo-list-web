@@ -1002,4 +1002,317 @@ box-shadow: 0 0 30px rgba(157, 0, 255, 0.2);
 }
 
 
+/* End of CSS Block for Settings.html */
+
+
+
+/* CSS Block for about.html */
+.about-container {
+    max-width: 1000px;
+    margin: 100px auto;
+    padding: 0 20px;
+    background: transparent;
+    border: 2px solid rgba(157, 0, 255, 0.3);
+    backdrop-filter: blur(10px);
+    padding: 30px;
+    border-radius: var(--radius);
+}
+
+#about-section {
+    margin: 60px auto 20px auto; /* Đẩy khoảng cách trên dưới cho thoáng */
+    text-align: center;
+    max-width: 1000px; /* Giới hạn độ rộng để chữ không bị tràn băng thông ra 2 bên màn hình */
+    padding: 0 20px;
+}
+
+/* Tiêu đề ABOUT US */
+#about-section h1 {
+    font-family: 'Orbitron', sans-serif; /* Nếu bạn có dùng font này, không thì bỏ dòng này */
+    font-size: 36px;
+    font-style: italic;
+    color: #fff;
+    letter-spacing: 4px; /* Tăng khoảng cách giữa các chữ cái để tạo hiệu ứng "rộng rãi" hơn */
+    margin-bottom: 15px;
+    text-shadow: 0 0 10px var(--primary); 
+}
+
+#about-section p {
+    font-size: 18px;
+    line-height: 1.6;
+    color: var(--text);
+    text-shadow: 0 0 8px rgba(0, 255, 255, 0.5); 
+    margin-bottom: 100px;
+}
+
+/* Phần glitch effect */
+#glitch-section {
+  display: flex;
+  justify-content: center;
+  margin: auto;
+}
+.glitch-wrap {
+  position: relative;
+  padding: 40px 60px;
+  border: 1px solid rgba(0, 255, 255, 0.25);
+  border-radius: 12px;
+  background: linear-gradient(135deg, rgba(255,0,180,0.05), rgba(0,255,255,0.05));
+  overflow: hidden;
+}
+.glitch {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 64px;
+  font-weight: 900;
+  color: #fff;
+  letter-spacing: 6px;
+  position: relative;
+  text-shadow: 0 0 20px var(--primary, #0ff);
+  margin: 0;
+}
+
+/* Tạo 2 lớp giả lập cho hiệu ứng glitch */
+.glitch::before,
+.glitch::after {
+  content: attr(data-text); /* Lấy nội dung từ thuộc tính data-text để đảm bảo đồng bộ chữ chính và lớp giả */
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  overflow: hidden;
+}
+.glitch::before {
+  color: #ff00c8;
+  text-shadow: 2px 0 #ff00c8;
+  animation: glitchTop 2.5s infinite linear alternate-reverse;
+  clip-path: polygon(0 0, 100% 0, 100% 45%, 0 45%); /* Chỉ hiển thị phần trên của chữ 0 đến 45% */
+}
+.glitch::after {
+  color: #00fff7;
+  text-shadow: -2px 0 #00fff7;
+  animation: glitchBot 3s infinite linear alternate-reverse;
+  clip-path: polygon(0 55%, 100% 55%, 100% 100%, 0 100%); /* Chỉ hiển thị phần dưới của chữ từ 55% đến 100% */
+}
+@keyframes glitchTop {
+  0%,100% { transform: translate(0); }
+  20% { transform: translate(-3px, -2px); }
+  40% { transform: translate(2px, 1px); }
+  60% { transform: translate(-1px, 2px); }
+  80% { transform: translate(3px, -1px); }
+}
+@keyframes glitchBot {
+  0%,100% { transform: translate(0); }
+  25% { transform: translate(2px, 1px); }
+  50% { transform: translate(-2px, -1px); }
+  75% { transform: translate(1px, 2px); }
+}
+.scanline {
+  position: absolute; inset: 0; 
+  background: repeating-linear-gradient( /* Tạo các vạch scan mỏng, xen kẽ giữa trong suốt và màu cyan nhạt (1px màu + 3px trong suốt)*/
+    to bottom,
+    transparent 0,
+    transparent 3px,
+    rgba(0,255,255,0.06) 3px,
+    rgba(0,255,255,0.06) 4px
+  );
+  pointer-events: none;
+  animation: scanMove 6s linear infinite;
+}
+@keyframes scanMove {
+  from { background-position: 0 0; }
+  to   { background-position: 0 40px; }
+}
+.doodle {
+  position: absolute;
+  font-size: 28px;
+  color: #ff00c8;
+  text-shadow: 0 0 12px #ff00c8;
+  animation: float 4s ease-in-out infinite;
+}
+.doodle-1 { top: 10px; left: 15px; }
+.doodle-2 { top: 12px; right: 25px; color: #00fff7; text-shadow: 0 0 12px #00fff7; animation-delay: .5s; }
+.doodle-3 { bottom: 14px; left: 30px; color: #fff200; text-shadow: 0 0 12px #fff200; animation-delay: 1s; }
+.doodle-4 { bottom: 12px; right: 20px; color: #00fff7; text-shadow: 0 0 12px #00fff7; animation-delay: 1.5s; }
+@keyframes float {
+  0%,100% { transform: translateY(0) rotate(0); }
+  50%     { transform: translateY(-8px) rotate(10deg); }
+}
+
+
+/* Carousel Animation with 5 cards */
+.visual {
+    width: 100%;
+    height: 500px; /* Định hình một khoảng trống đủ rộng để vòng tròn 3D xoay không bị đè lên chữ */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    margin-top: 100px;
+}
+
+.scene {
+    width: 250px;  /* chiều rộng của 1 card */
+    height: 350px; /* chiều cao của 1 card */
+    perspective: 1000px; /* ĐỘ SÂU 3D: Giúp vật ở gần nhìn to, ở xa nhìn nhỏ */
+    position: relative;
+}
+
+
+.carousel {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    transform-style: preserve-3d; /* Ép các card con bên trong giữ nguyên hình khối 3D */
+    animation: rotateCarousel 25s infinite linear; /* Gọi hiệu ứng xoay liên tục mất 25s */
+}
+
+@keyframes rotateCarousel {
+    from {
+        transform: rotateY(0deg); /* Bắt đầu ở góc 0 độ */
+    }
+    to {
+        transform: rotateY(360deg); /* Kết thúc ở góc 360 độ, tạo vòng xoay hoàn chỉnh */
+    }
+}
+.carousel:hover {
+    animation-play-state: paused;
+}
+
+
+
+/* CHIA GÓC XOAY ĐỂ ĐẨY 5 CARD THÀNH VÒNG TRÒN (360 độ / 5 card = 72 độ) */
+.carousel .card:nth-child(1) { transform: rotateY(0deg) translateZ(350px); }
+.carousel .card:nth-child(2) { transform: rotateY(72deg) translateZ(350px); }
+.carousel .card:nth-child(3) { transform: rotateY(144deg) translateZ(350px); }
+.carousel .card:nth-child(4) { transform: rotateY(216deg) translateZ(350px); }
+.carousel .card:nth-child(5) { transform: rotateY(288deg) translateZ(350px); }
+
+
+/* Style cho nội dung bên trong mỗi card */
+.carousel .card {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 18px;
+  padding: 24px;
+  background: linear-gradient(160deg,
+    rgba(255, 0, 200, 0.12),
+    rgba(0, 255, 255, 0.08) 60%,
+    rgba(0, 0, 0, 0.4));
+  border: 1px solid rgba(0, 255, 255, 0.35);
+  backdrop-filter: blur(14px);
+
+  box-shadow:
+    0 0 25px rgba(0, 255, 255, 0.25),
+    0 0 60px rgba(255, 0, 200, 0.15),
+    inset 0 0 30px rgba(0, 255, 255, 0.08); /* Bóng sáng bên ngoài + Bóng mờ bên trong tạo chiều sâu cho card */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /*đẩy nội dung ra xa 2 đầu trên dưới*/
+  transition: box-shadow .3s ease;
+  overflow: hidden; /* Để hiệu ứng shine không bị tràn ra ngoài card */
+}
+.carousel .card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(120deg, transparent 30%, rgba(255,255,255,0.08) 50%, transparent 70%);
+  transform: translateX(-100%);
+  animation: shine 6s ease-in-out infinite;
+}
+@keyframes shine {
+  50%, 100% { transform: translateX(100%); }
+}
+.card-id {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 14px;
+  letter-spacing: 3px;
+  color: #ff00c8;
+  text-shadow: 0 0 8px #ff00c8;
+  align-self: flex-end;
+  border: 1px solid #ff00c8;
+  padding: 4px 10px;
+  border-radius: 999px;
+}
+.card-content h3 {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 32px;
+  color: #00fff7;
+  letter-spacing: 4px;
+  margin: 0 0 12px;
+  text-shadow: 0 0 12px #00fff7;
+}
+
+.card-content p {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #e6f9ff;
+  font-style: italic;
+}
+
+
+/* End of CSS Block for about.html */
+
+
+
+
+
+
+
+/* Footer */
+.site-footer {
+  margin-top: 120px;
+  padding: 50px 20px 30px;
+  background: linear-gradient(180deg, transparent, rgba(255, 0, 200, 0.08), rgba(0, 255, 255, 0.08));
+  border-top: 1px solid rgba(0, 255, 255, 0.25);
+  text-align: center;
+}
+.footer-inner {
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+}
+.footer-brand h3 {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 28px;
+  letter-spacing: 6px;
+  color: #fff;
+  text-shadow: 0 0 12px #00fff7, 0 0 24px #ff00c8;
+  margin: 0;
+}
+.footer-brand p {
+  font-family: 'Rajdhani', sans-serif;
+  color: #b8eaff;
+  margin: 6px 0 0;
+}
+.footer-social {
+  display: flex;
+  gap: 18px;
+}
+.footer-social a {
+  width: 45px;
+  height: 45px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 255, 255, 0.4);
+  color: #00fff7;
+  font-size: 18px;
+  text-decoration: none;
+  transition: all .3s ease;
+  background: rgba(0, 0, 0, 0.3);
+}
+.footer-social a:hover {
+  color: #fff;
+  border-color: #ff00c8;
+  box-shadow: 0 0 18px #ff00c8, 0 0 30px rgba(0, 255, 255, 0.4);
+  transform: translateY(-3px) scale(1.08);
+}
+.footer-copy {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 13px;
+  color: #8ab9c7;
+  letter-spacing: 2px;
+}
 

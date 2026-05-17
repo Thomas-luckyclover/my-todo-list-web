@@ -30,17 +30,19 @@ Todoit! là một ứng dụng quản lý công việc (ToDo list) với giao di
 Hiện tại dự án mới dừng ở giao diện tĩnh, các nút bấm chưa có chức năng xử lý dữ liệu. Đây là phiên bản demo để trưng bày thiết kế và cấu trúc HTML/CSS.
 
 ## ⓘ Thông tin phiên bản
-TODO IT! - v1.0.0
 
-*Ngày phát hành: 16/05/2026*
+### 🔴 VER_1.1.0 // THE HOLOGRAPHIC UPDATE
 
-Thiết kế hoàn chỉnh 4 trang: Home, Tasks, Stats, Settings.
+*Ngày phát hành: 17/05/2026* 
 
-Phong cách cyberpunk neon nhất quán (gradient, glow, glassmorphism).
+- 🔮 **Hoàn thiện trang About Us:** Tích hợp thành công cấu trúc 5 trang hoàn chỉnh cho toàn bộ hệ thống (`Home`, `Tasks`, `Stats`, `Settings`, `About`).
+- 
+- 🔄 **Holographic Core 3D:** Triển khai cấu trúc hình học không gian CSS 3D (`perspective`, `transform-style: preserve-3d`) biến các thẻ châm ngôn thành một vòng xoay Carousel lơ lửng, tự động xoay quanh trục đứng và tự động tạm dừng (`paused`) khi người dùng hover chuột để đọc thông tin.
+- 
+- ⚡ **Cyan Glitch Title & Scanlines:** Ứng dụng kỹ thuật "băm chữ" bằng `clip-path` và nhân bản lớp `::before`/`::after` để tạo hiệu ứng chữ tiêu đề giật lag nhiễu sóng (Glitch effect). Phủ thêm lớp sọc màn hình `.scanline` tịnh tiến liên tục để tạo vibe điện ảnh CRT cũ.
+- 
+- ✨ **Shine-Through Cards:** Nâng cấp hiệu ứng kính mờ (Glassmorphic) cho các thẻ với 3 lớp đổ bóng phát quang kép (`box-shadow`), kèm theo một dải sáng gradient quét ngang bề mặt kính (`@keyframes shine`) chạy vô tận tuần hoàn.
 
-Hiệu ứng sidebar trượt khi hover, mũi tên nhấp nháy.
-
-Trang Tasks có khung tìm kiếm với góc sáng động, bộ lọc/sắp xếp (giao diện tĩnh).
 
 ## 👤 Tác giả
 
