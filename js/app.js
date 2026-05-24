@@ -73,7 +73,7 @@ function playMusic(songId) {
   }
 
   // Tạo audio mới với đường dẫn tuyệt đối (từ thư mục gốc của dự án)
-  const audioSrc = `/assets/music/${songId}.mp3`;
+  const audioSrc = `./assets/music/${songId}.mp3`;
   console.log(`🎵 Loading audio from: ${audioSrc}`);
   const audio = new Audio(audioSrc);
   audio.loop = true;
