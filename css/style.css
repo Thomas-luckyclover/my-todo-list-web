@@ -49,7 +49,7 @@ body {
 
     /* Set up for main content area  */
     width: 400px;
-    height: 500px;
+    height: 515px;
     padding: 30px; /* ghi đè padding bên trong để tạo khoảng cách giữa nội dung và viền */
     background: transparent;
     border: 2px solid black;
@@ -274,6 +274,31 @@ body {
     outline: none;
     width: 39px;
     height: 39px;
+}
+
+
+.load-more-home {
+    width: 200px;
+    margin: 10px auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    background: rgba(14, 106, 204, 0.3);
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(14, 106, 204, 0.3);
+    box-shadow: inset 0 0 10px cyan;
+    border-radius: 5px;
+    padding: 10px 15px;
+    color: var(--text);
+    font-size: 13px;
+    letter-spacing: 1px;
+    transition: all 0.3s;
+}
+.load-more-home:hover {
+    background: rgba(0, 255, 255, 0.5);
+    color: white;
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
 }
 
 .empty-image {
@@ -1316,3 +1341,27 @@ box-shadow: 0 0 30px rgba(157, 0, 255, 0.2);
   letter-spacing: 2px;
 }
 
+
+
+
+/* CSS for JS + HTML để */
+/* Home page - task item style (cyan card) */
+.home-task-item {
+    background: rgba(0, 255, 255, 0.1);
+    border-left: 4px solid #0ff;
+    margin: 12px 0;
+    padding: 12px 18px;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    backdrop-filter: blur(4px);
+    box-shadow: 0 0 6px rgba(0, 255, 255, 0.3);
+    color: #e0f7fa;
+    font-weight: 500;
+    font-size: 16px;
+}
+.home-task-item:hover {
+    background: rgba(0, 255, 255, 0.25);
+    transform: translateX(6px);
+    box-shadow: 0 0 15px cyan;
+}
