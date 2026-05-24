@@ -1,104 +1,103 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="../css/style.css">
-    <title>Todoit!</title>
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <link rel="stylesheet" href="../css/style.css" />
+    <title>Todoit! - Tasks</title>
+  </head>
+  <body>
     <div class="container">
-    <header class="header"> <!-- header section  -->
+      <header class="header">
         <div class="logo-header">
-            <img src="../assets/logo.png" alt="logo of the page - a neon owl">
+          <img src="../assets/logo.png" alt="logo" />
         </div>
         <nav class="nav-header">
-            <a href="../index.html">Home</a> 
-            <a href="Tasks.html">Tasks</a>
-            <a href="Stats.html">Stats</a>
-            <a href="Settings.html">Settings</a>
-            <a href="about.html">About</a>
+          <a href="../index.html">Home</a>
+          <a href="Tasks.html">Tasks</a>
+          <a href="Stats.html">Stats</a>
+          <a href="Settings.html">Settings</a>
+          <a href="about.html">About</a>
         </nav>
-    </header>
+      </header>
     </div>
 
-    <main> <!-- main-section  -->
-
-        <div class ="searchbox-container-2"> <!-- search box container -->
-            <h2>Search Tool</h2>
-          <div class="search-box">
-                <input type="text" placeholder="Search Tasks...">
-                <i class="fa-solid fa-magnifying-glass"></i>
-          </div>
-          
-        <div class="filter-sort-box">
-          <div>
-            <select name="" id="">
-                <option value="">All</option>
-                <option value="">Low</option>
-                <option value="">Medium</option>
-                <option value="">High</option>
-            </select>
-
-            <select name="" id="">
-                <option value="">Sort: Newest</option>
-                <option value="">Sort: Oldest</option>
-                <option value="">Sort: Priority</option>
-                <option value="">Sort: Alphabetical</option>
-            </select>
+    <main>
+      <!-- Khung tìm kiếm và lọc -->
+      <div class="searchbox-container-2">
+        <h2>Search Tool</h2>
+        <div class="search-box">
+          <input type="text" id="searchInput" placeholder="Search Tasks..." />
+          <i class="fa-solid fa-magnifying-glass" id="searchIcon"></i>
         </div>
-    
-    </div>
-    </div>
+        <div class="filter-sort-box">
+          <select id="priorityFilter">
+            <option value="all">All</option>
+            <option value="Low">Low</option>
+            <option value="Medium">Medium</option>
+            <option value="High">High</option>
+          </select>
+          <select id="sortSelect">
+            <option value="newest">Sort: Newest</option>
+            <option value="oldest">Sort: Oldest</option>
+            <option value="priority">Sort: Priority</option>
+            <option value="alpha">Sort: Alphabetical</option>
+          </select>
+        </div>
+      </div>
 
-    <div class="task-list-header">
+      <div class="task-list-header">
         <h2>Your Tasks</h2>
-    </div>
-    
-    <div class="task-item">
-        <!-- Task items will go here -->
-         <h2>Task title</h2>
-         <div>
-            <input type="text" placeholder="Description (optional)">
-         </div>
-         <div class="task-option">
-                <select name="" id="">
-                    <option value="">Set Priority</option>
-                    <option value="">Low</option>
-                    <option value="">Medium</option>
-                    <option value="">High</option>
-                </select>
+      </div>
 
-                <input type="date">
-         </div>
-         <div class="task-actions">
-                <i class="fa-solid fa-trash-can action-btn delete"></i>
-                <i class="fa-solid fa-circle-check action-btn check"></i>    
-         </div>
-    </div>
-    
-    <div class="load-more">
-        Load more tasks...
-    </div>
+      <!-- TEMPLATE CHO MỖI TASK (ẨN, DÙNG ĐỂ CLONE) -->
+      <div class="task-item" style="display: none">
+        <h2 contenteditable="true">Task title</h2>
+        <div>
+          <input type="text" placeholder="Description (optional)" />
+        </div>
+        <div class="task-option">
+          <select>
+            <option value="Low">Low</option>
+            <option value="Medium" selected>Medium</option>
+            <option value="High">High</option>
+          </select>
+          <input type="date" />
+          <select class="status-select">
+            <option value="todo">Todo</option>
+            <option value="in-progress">In Progress</option>
+            <option value="done">Done</option>
+          </select>
+        </div>
+        <div class="task-actions">
+          <i class="fa-solid fa-trash-can action-btn delete"></i>
+          <i class="fa-solid fa-circle-check action-btn check"></i>
+        </div>
+      </div>
+
+      <div class="load-more">Load more tasks...</div>
     </main>
 
     <footer class="site-footer">
-    <div class="footer-inner">
-      <div class="footer-brand">
-        <h3>TODOIT!</h3>
-        <p>Stay neon. Stay productive.</p>
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <h3>TODOIT!</h3>
+          <p>Stay neon. Stay productive.</p>
+        </div>
+        <div class="footer-social">
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-x-twitter"></i></a>
+          <a href="#"><i class="fab fa-github"></i></a>
+          <a href="#"><i class="fab fa-discord"></i></a>
+        </div>
+        <p class="footer-copy">© 2026 Todoit! — Built with neon & caffeine.</p>
       </div>
-      <div class="footer-social">
-        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-        <a href="#" aria-label="Twitter"><i class="fab fa-x-twitter"></i></a>
-        <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
-        <a href="#" aria-label="Discord"><i class="fab fa-discord"></i></a>
-      </div>
-      <p class="footer-copy">© 2026 Todoit! — Built with neon & caffeine.</p>
-    </div>
-  </footer>
+    </footer>
     <script src="../js/app.js" defer></script>
-</body>
+  </body>
 </html>
